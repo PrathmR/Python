@@ -55,8 +55,7 @@ def get_weather_data(lat, lon):
 
 
 def save_rainfall_chart(rainfall, dates, cname):
-    clean_dates = []
-    clean_rainfall = []
+    clean_dates, clean_rainfall = [], []
     for d, r in zip(dates, rainfall):
         if r is not None:
             clean_dates.append(d)
@@ -77,8 +76,7 @@ def save_rainfall_chart(rainfall, dates, cname):
 
 
 def save_temperature_chart(temps, dates, cname):
-    clean_dates = []
-    clean_temps = []
+    clean_dates, clean_temps = [], []
     for d, t in zip(dates, temps):
         if t is not None:
             clean_dates.append(d)
@@ -98,40 +96,24 @@ def save_temperature_chart(temps, dates, cname):
     return "temperature.png"
 
 
-def save_city_map(lat, lon, cname):
-    """
-    Create a temperature heatmap around the searched city.
-    Uses OpenWeather API to sample nearby grid points.
-    """
-    API_KEY = "YOUR_OPENWEATHER_API_KEY"  # <-- put your key here
+def save_city_map(lat, lon, temps, cname):
+    clean_temps = [t for t in temps if t is not None]
+    avg_temp = sum(clean_temps) / len(clean_temps) if clean_temps else 0
+
+    heat_data = [[lat, lon, avg_temp]]
 
     m = folium.Map(location=[lat, lon], zoom_start=10)
-    heat_data = []
+    HeatMap(heat_data, radius=40, blur=20, max_zoom=10).add_to(m)
 
-    step = 0.05   # about ~5 km step
-    grid_size = 3  # creates (2*grid_size+1)^2 points, here 7x7 = 49 calls
+    maps_dir = os.path.join("static", "maps")
+    if not os.path.exists(maps_dir):
+        os.makedirs(maps_dir)
 
-    for i in range(-grid_size, grid_size + 1):
-        for j in range(-grid_size, grid_size + 1):
-            lat_offset = lat + (i * step)
-            lon_offset = lon + (j * step)
-
-            url = (
-                f"http://api.openweathermap.org/data/2.5/weather?"
-                f"lat={lat_offset}&lon={lon_offset}&appid={API_KEY}&units=metric"
-            )
-            resp = requests.get(url).json()
-
-            temp = resp.get("main", {}).get("temp")
-            if temp is not None:
-                heat_data.append([lat_offset, lon_offset, temp])
-
-    if heat_data:
-        HeatMap(heat_data, radius=25, blur=15, min_opacity=0.5).add_to(m)
-
-    filepath = os.path.join("static", "city_map.html")
+    safe_city = cname.replace(" ", "_").lower()
+    filepath = os.path.join(maps_dir, f"{safe_city}_map.html")
     m.save(filepath)
-    return "city_map.html"
+
+    return f"maps/{safe_city}_map.html"
 
 
 # ---------- Routes ---------- #
@@ -150,7 +132,7 @@ def index():
             if temps and rainfall:
                 temp_chart = save_temperature_chart(temps, dates, cname)
                 rain_chart = save_rainfall_chart(rainfall, dates, cname)
-                city_map = save_city_map(lat, lon, cname)
+                city_map = save_city_map(lat, lon, temps, cname)
             else:
                 error_msg = f"No climate data found for '{city}'."
         else:
