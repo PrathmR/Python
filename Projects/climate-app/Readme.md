@@ -1,7 +1,4 @@
-Got it 👍
-Here’s the **README.md** in plain text (single block):
 
----
 
 # 🌦 Climate Analysis Dashboard
 
@@ -86,19 +83,11 @@ pip install -r requirements.txt
 ```
 
 ### 3. Run the Flask App
-
 ```bash
 python app.py
 ```
-
 ### 4. Open in Browser
-
 Visit:
-
 ```
 http://127.0.0.1:5000/
 ```
-
----
-
-
