@@ -8,6 +8,11 @@ This project is a **Flask-based Climate Dashboard** that allows users to search 
 * 🌧 **Rainfall Trend** (past week)
 * 🗺 **City Heatmap** (visualizing average temperature intensity across the searched city)
 
+  <img width="1898" height="901" alt="image" src="https://github.com/user-attachments/assets/88a47f78-25c3-49f4-a844-abeae0c985e0" />
+  <img width="1897" height="641" alt="image" src="https://github.com/user-attachments/assets/b71fa90d-a3d6-4261-a62d-1b7394177ce6" />
+
+
+
 ---
 
 ## 🚀 Project Flow
