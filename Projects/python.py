@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 # x=['A','B','C']
 # y=[6,7,8]
 # plt.bar(x, y,color='red')
@@ -36,9 +36,9 @@ import matplotlib.pyplot as plt
 
 
 
-import numpy as np 
-a=np.array([1,2,3,4])
-b=np.array([5,6,7,8])
+# import numpy as np 
+# a=np.array([1,2,3,4])
+# b=np.array([5,6,7,8])
 # print(a)
 # print(np.zeros(a))
 # print()
@@ -48,7 +48,52 @@ b=np.array([5,6,7,8])
 # print(np.add(a,b))
 # print(a+b)
 # print(np.mean(a))
-twoD=np.array([[1,2,3,4],[5,6,7,8]])
-print(twoD.reshape(2,4))
-print(f'minimum = {np.mean(a)}\n maximum = {np.max(a)}\n')
-print(twoD.T)
+# twoD=np.array([[1,2,3,4],[5,6,7,8]])
+# print(twoD.reshape(2,4))
+# print(f'minimum = {np.mean(a)}\n maximum = {np.max(a)}\n')
+# print(twoD.T)
+
+# import pandas as pd
+# s=pd.Series([20,33,44,55], index=['A', 'B', 'C','D'])
+# print(s.head())
+# print(s.tail())
+# print(s.describe())
+
+# Data={'names':['veer','sahana','shreya'],'age':[20,30,40]}
+# df=pd.dataframe(Data)
+# print(df)
+#df = pd.read_csv('C:\Users\Lenovo\OneDrive\NAGU\Documents\Python\Projects\SuperStore-sales\data\superstore.csv')
+
+#Creating a CSV File
+# %%writefile foo.csv
+# date,col1,col2,col3
+# 2023-01-01,a,b,1
+# 2023-01-02,a,b,2
+# 2023-01-03,c,d,3
+
+# df=pd.read_csv('foo.csv',index_col=0,parse_dates=True),
+# print(df)
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.array([1,2,3,4,5])
+y=np.array([5,6,7,8,9])
+plt.plot(x,y)
+plt.show()
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('X vs Y')
+plt.bar(x,y,color='red')
+plt.title('Bar Graph')
+plt.show()
+plt.hist(y)
+plt.title('Histogram')
+plt.show()
+plt.scatter(x,y)  
+plt.title('Scatter Plot') 
+plt.show()
+plt.pie(y,labels=x) 
+plt.title('Pie Chart')
+plt.show()
