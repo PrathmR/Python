@@ -76,24 +76,39 @@
 
 
 
-import numpy as np
+# import numpy as np
+# import matplotlib.pyplot as plt
+# x=np.array([1,2,3,4,5])
+# y=np.array([5,6,7,8,9])
+# plt.plot(x,y)
+# plt.show()
+# plt.xlabel('X-axis')
+# plt.ylabel('Y-axis')
+# plt.title('X vs Y')
+# plt.bar(x,y,color='red')
+# plt.title('Bar Graph')
+# plt.show()
+# plt.hist(y)
+# plt.title('Histogram')
+# plt.show()
+# plt.scatter(x,y)  
+# plt.title('Scatter Plot') 
+# plt.show()
+# plt.pie(y,labels=x) 
+# plt.title('Pie Chart')
+# plt.show()
+
+import seaborn as sns
 import matplotlib.pyplot as plt
-x=np.array([1,2,3,4,5])
-y=np.array([5,6,7,8,9])
-plt.plot(x,y)
+print(sns.__version__)
+df=sns.load_dataset('iris')
+print(df.head())
+sns.scatterplot(data=df,x='sepal_length',y='sepal_width',hue='species')
 plt.show()
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.title('X vs Y')
-plt.bar(x,y,color='red')
-plt.title('Bar Graph')
+sns.boxplot(data=df,x='species',y='sepal_length')
 plt.show()
-plt.hist(y)
-plt.title('Histogram')
+sns.violinplot(data=df,x='species',y='sepal_length')
 plt.show()
-plt.scatter(x,y)  
-plt.title('Scatter Plot') 
-plt.show()
-plt.pie(y,labels=x) 
-plt.title('Pie Chart')
-plt.show()
+
+import sklearn as sk
+print(sk.__version__)
