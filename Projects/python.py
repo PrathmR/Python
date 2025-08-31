@@ -98,17 +98,17 @@
 # plt.title('Pie Chart')
 # plt.show()
 
-import seaborn as sns
-import matplotlib.pyplot as plt
-print(sns.__version__)
-df=sns.load_dataset('iris')
-print(df.head())
-sns.scatterplot(data=df,x='sepal_length',y='sepal_width',hue='species')
-plt.show()
-sns.boxplot(data=df,x='species',y='sepal_length')
-plt.show()
-sns.violinplot(data=df,x='species',y='sepal_length')
-plt.show()
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+# print(sns.__version__)
+# df=sns.load_dataset('iris')
+# print(df.head())
+# sns.scatterplot(data=df,x='sepal_length',y='sepal_width',hue='species')
+# plt.show()
+# sns.boxplot(data=df,x='species',y='sepal_length')
+# plt.show()
+# sns.violinplot(data=df,x='species',y='sepal_length')
+# plt.show()
 
 import sklearn as sk
 print(sk.__version__)
