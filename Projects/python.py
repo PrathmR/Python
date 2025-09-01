@@ -132,3 +132,19 @@ scaler=StandardScaler()
 X_scaled=scaler.fit_transform(X)
 print("Original Data (first 5 rows):\n", X[:5])
 print("\n Scaled Dataa (first 5 rows):\n", X_scaled[:5])
+
+
+from sklearn.model_selection import train_test_split
+y=iris.target
+X_train, X_test, y_train, y_test=train_test_split(
+    X_scaled, y, test_size=0.2, random_state=42
+)
+
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(max_iter=200)
+model.fit(X_train,y_train)
+y_pred=model.predict(X_test)
+
+from sklearn.metrics import accuracy_score
+accuracy=accuracy_score(y_test,y_pred)
+print("Accuracy",accuracy)
