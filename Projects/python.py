@@ -110,5 +110,25 @@
 # sns.violinplot(data=df,x='species',y='sepal_length')
 # plt.show()
 
+
+# |Data sources(csv,escel,json) | --> |Data Preprocessing(scaling,encoding,missing value)| --> |Model Selection| --> |Train & test| --> |Evaluation|
+
 import sklearn as sk
-print(sk.__version__)
+from sklearn import preprocessing
+import numpy as np
+# X_train= np.array([[1,-1.1],[2,0.0],[0.1,-1]])
+# scaler =preprocessing.StandardScaler().fit(X_train)
+# print(f'\n mean = {scaler.mean_}\n')
+# print(scaler.scale_)
+# X_scaled=scaler.transform(X_train)
+# print(f'\n scaled = {X_scaled}\n')
+
+
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler
+iris= load_iris()
+X= iris.data
+scaler=StandardScaler()
+X_scaled=scaler.fit_transform(X)
+print("Original Data (first 5 rows):\n", X[:5])
+print("\n Scaled Dataa (first 5 rows):\n", X_scaled[:5])
